@@ -10,11 +10,15 @@ import Foundation
 
 
 class EmojiMemoryGame {
-    private var model: MemoryGame<String> = MemoryGame<String>(numberOfPairsOfCards: 2, cardContentFactory: {pairIndex in  "👻" })
+    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
-//    init() {
-//        self.model = MemoryGame<String>()
-//    }
+    static func createMemoryGame() -> MemoryGame<String> {
+        let emojis: Array<String> = ["👻", "🎃", "🕷"]
+        return MemoryGame<String>(numberOfPairsOfCards: emojis.count) { pairIndex in
+            emojis[pairIndex]
+        }
+    }
+    
     
     var cards: Array<MemoryGame<String>.Card> {
         model.cards

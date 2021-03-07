@@ -8,34 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
+    var viewModel: EmojiMemoryGame
+    
     var body: some View {
-        VStack {
-            ForEach(0..<4) { index in
-                HStack {
-                    ForEach(0..<4) { index in
-                        CardView(faceUp: false)
-                    }
-                }
+        HStack {
+            ForEach(viewModel.cards) { card in
+                CardView(card: card)
             }
         }
         .padding()
         .foregroundColor(.orange)
         .font(.largeTitle)
+//        VStack {
+//            ForEach(0..<4) { index in
+//                HStack {
+//                    ForEach(0..<4) { index in
+//                        CardView(card: <#T##MemoryGame<String>.Card#>)
+//                    }
+//                }
+//            }
+//        }
+        
         
     }
 }
 
 
 struct CardView: View {
-    var faceUp: Bool
+    var card: MemoryGame<String>.Card
+    
     var body: some View {
         ZStack {
-            if faceUp {
+            if card.isFaceUp {
                 RoundedRectangle(cornerRadius: 25.0)
                     .fill(Color.white)
                 RoundedRectangle(cornerRadius: 25.0)
                     .stroke(lineWidth: 3)
-                Text("👻")
+                Text(card.content)
             } else {
                 RoundedRectangle(cornerRadius: 25.0)
                     .fill()
@@ -47,6 +56,6 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: EmojiMemoryGame())
     }
 }
