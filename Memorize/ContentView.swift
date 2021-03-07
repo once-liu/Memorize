@@ -13,23 +13,14 @@ struct ContentView: View {
     var body: some View {
         HStack {
             ForEach(viewModel.cards) { card in
-                CardView(card: card)
+                CardView(card: card).onTapGesture {
+                    viewModel.choose(card: card)
+                }
             }
         }
         .padding()
         .foregroundColor(.orange)
         .font(.largeTitle)
-//        VStack {
-//            ForEach(0..<4) { index in
-//                HStack {
-//                    ForEach(0..<4) { index in
-//                        CardView(card: <#T##MemoryGame<String>.Card#>)
-//                    }
-//                }
-//            }
-//        }
-        
-        
     }
 }
 
