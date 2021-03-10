@@ -11,12 +11,11 @@ struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
-        HStack {
-            ForEach(viewModel.cards) { card in
-                CardView(card: card).onTapGesture {
-                    viewModel.choose(card: card)
-                }
+        Grid (viewModel.cards) { card in
+            CardView(card: card).onTapGesture {
+                viewModel.choose(card: card)
             }
+            .padding(10)
         }
         .padding()
         .foregroundColor(.orange)
@@ -42,8 +41,11 @@ struct CardView: View {
                     .stroke(lineWidth: lineWidth)
                 Text(card.content)
             } else {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill()
+                // 已匹配过的 Card 要消失
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill()
+                }
             }
         }
         .font(.system(size: systemFont(size: size)))
@@ -59,7 +61,11 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: EmojiMemoryGame())
+        Group {
+            ContentView(viewModel: EmojiMemoryGame())
+        }
             
     }
 }
+
+
