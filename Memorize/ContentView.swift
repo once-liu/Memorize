@@ -35,7 +35,7 @@ struct CardView: View {
     // FIXME: ViewBuilder 的用法
     @ViewBuilder
     func body(size: CGSize) -> some View {
-        // 翻过的要显示反面 || 匹配过之后不再显示
+        // 选中的显示正面 || 匹配过之后不再显示
         if card.isFaceUp || !card.isMatched {
             ZStack {
                 // FIXME:  为什么使用顺时针
