@@ -32,16 +32,21 @@ struct CardView: View {
         }
     }
     
+    // FIXME: ViewBuilder 的用法
+    @ViewBuilder
     func body(size: CGSize) -> some View {
-        ZStack {
-            // FIXME:  为什么使用顺时针
-            Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 120-90), clockwise: true)
-                .padding(5)
-                .opacity(0.4)
-            Text(card.content)
-                .font(.system(size: systemFont(size: size)))
+        // 翻过的要显示反面 || 匹配过之后不再显示
+        if card.isFaceUp || !card.isMatched {
+            ZStack {
+                // FIXME:  为什么使用顺时针
+                Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 120-90), clockwise: true)
+                    .padding(5)
+                    .opacity(0.4)
+                Text(card.content)
+                    .font(.system(size: systemFont(size: size)))
+            }
+            .cardify(isFaceUp: card.isFaceUp)
         }
-        .cardify(isFaceUp: card.isFaceUp)
     }
     
     
