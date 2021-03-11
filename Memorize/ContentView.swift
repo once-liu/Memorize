@@ -34,29 +34,17 @@ struct CardView: View {
     
     func body(size: CGSize) -> some View {
         ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(Color.white)
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(lineWidth: lineWidth)
-                // FIXME:  为什么使用顺时针
-                Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 120-90), clockwise: true)
-                    .padding(5)
-                    .opacity(0.4)
-                Text(card.content)
-            } else {
-                // 已匹配过的 Card 要消失
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill()
-                }
-            }
+            // FIXME:  为什么使用顺时针
+            Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 120-90), clockwise: true)
+                .padding(5)
+                .opacity(0.4)
+            Text(card.content)
+                .font(.system(size: systemFont(size: size)))
         }
-        .font(.system(size: systemFont(size: size)))
+        .cardify(isFaceUp: card.isFaceUp)
     }
     
-    private let cornerRadius: CGFloat = 10
-    private let lineWidth: CGFloat = 3
+    
     private func systemFont(size: CGSize) -> CGFloat {
         min(size.width, size.height) * 0.6
     }

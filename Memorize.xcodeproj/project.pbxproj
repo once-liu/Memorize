@@ -20,6 +20,7 @@
 		96C0CB0025F8E45D00185BC6 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0CAFF25F8E45D00185BC6 /* Array+Identifiable.swift */; };
 		96C0CB0325F8F8B100185BC6 /* Array+Only.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0CB0225F8F8B100185BC6 /* Array+Only.swift */; };
 		96C0CB0825FA06C500185BC6 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0CB0725FA06C400185BC6 /* Pie.swift */; };
+		96C0CB0B25FA172A00185BC6 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0CB0A25FA172A00185BC6 /* Cardify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		96C0CAFF25F8E45D00185BC6 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		96C0CB0225F8F8B100185BC6 /* Array+Only.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Only.swift"; sourceTree = "<group>"; };
 		96C0CB0725FA06C400185BC6 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		96C0CB0A25FA172A00185BC6 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				9677254825EF67DF00461F5F /* AppDelegate.swift */,
 				9677254A25EF67DF00461F5F /* SceneDelegate.swift */,
 				9677254C25EF67DF00461F5F /* ContentView.swift */,
+				96C0CB0A25FA172A00185BC6 /* Cardify.swift */,
 				96C0CB0725FA06C400185BC6 /* Pie.swift */,
 				96C0CAF825F8C28F00185BC6 /* Grid.swift */,
 				96C0CAFF25F8E45D00185BC6 /* Array+Identifiable.swift */,
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C0CB0B25FA172A00185BC6 /* Cardify.swift in Sources */,
 				96C0CB0825FA06C500185BC6 /* Pie.swift in Sources */,
 				967725A025F0BD9D00461F5F /* EmojiMemoryGame.swift in Sources */,
 				9677254925EF67DF00461F5F /* AppDelegate.swift in Sources */,
