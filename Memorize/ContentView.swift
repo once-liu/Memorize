@@ -39,6 +39,10 @@ struct CardView: View {
                     .fill(Color.white)
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(lineWidth: lineWidth)
+                // FIXME:  为什么使用顺时针
+                Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 120-90), clockwise: true)
+                    .padding(5)
+                    .opacity(0.4)
                 Text(card.content)
             } else {
                 // 已匹配过的 Card 要消失
@@ -51,20 +55,20 @@ struct CardView: View {
         .font(.system(size: systemFont(size: size)))
     }
     
-    let cornerRadius: CGFloat = 10
-    let lineWidth: CGFloat = 3
-    func systemFont(size: CGSize) -> CGFloat {
-        min(size.width, size.height) * 0.75
+    private let cornerRadius: CGFloat = 10
+    private let lineWidth: CGFloat = 3
+    private func systemFont(size: CGSize) -> CGFloat {
+        min(size.width, size.height) * 0.6
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ContentView(viewModel: EmojiMemoryGame())
-        }
-            
+        let game = EmojiMemoryGame()
+        game.choose(card: game.cards[0])
+        return ContentView(viewModel: game)
+        
     }
 }
 
