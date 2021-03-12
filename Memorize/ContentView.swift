@@ -47,6 +47,7 @@ struct CardView: View {
     func body(size: CGSize) -> some View {
         // 选中的显示正面 || 匹配过之后不再显示
         if card.isFaceUp || !card.isMatched {
+            // FIXME: 倒计时动画实现
             ZStack {
                 // FIXME:  为什么使用顺时针
                 Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 120-90), clockwise: true)
