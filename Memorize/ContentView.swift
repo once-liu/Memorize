@@ -11,14 +11,24 @@ struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
-        Grid (viewModel.cards) { card in
-            CardView(card: card).onTapGesture {
-                viewModel.choose(card: card)
+        VStack {
+            Grid (viewModel.cards) { card in
+                CardView(card: card).onTapGesture {
+                    withAnimation(.linear(duration: 0.5)) {
+                        viewModel.choose(card: card)
+                    }
+                }
+                .padding(10)
             }
-            .padding(10)
+            .padding()
+            .foregroundColor(.orange)
+            Button {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    viewModel.resetGame()
+                }
+            } label: { Text("New game") }
+
         }
-        .padding()
-        .foregroundColor(.orange)
     }
 }
 
@@ -44,6 +54,8 @@ struct CardView: View {
                     .opacity(0.4)
                 Text(card.content)
                     .font(.system(size: systemFont(size: size)))
+                    .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
+                    .animation(card.isMatched ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default)
             }
             .cardify(isFaceUp: card.isFaceUp)
         }
