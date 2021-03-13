@@ -32,6 +32,12 @@ struct ContentView: View {
     }
 }
 
+/*
+ * FixMe
+ 1. ViewBuilder 的用法
+ 2. FIXME: 倒计时动画实现
+ 3. 为什么使用顺时针
+ */
 
 struct CardView: View {
     var card: MemoryGame<String>.Card
